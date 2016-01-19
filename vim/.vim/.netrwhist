@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/luolei/Downloads/autohidetopbar@fpmurphy.com'
+let g:netrw_dirhist_2='/usr/share/application-registry'
+let g:netrw_dirhist_3='/tmp'
+let g:netrw_dirhist_4='/home/luolei/xuanduAndroid'
+let g:netrw_dirhist_5='/home/luolei/soundsInterestingPapers/read'
+let g:netrw_dirhist_6='/home/luolei/mysite/mysite'
