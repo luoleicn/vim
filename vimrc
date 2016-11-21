@@ -269,6 +269,9 @@ set pastetoggle=<F3>
 "let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
 "let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
 
+au BufNewFile,BufRead *.cu set ft=cuda
+au BufNewFile,BufRead *.cuh set ft=cuda
+
 set nowrap
 set showcmd
 set incsearch
