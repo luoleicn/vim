@@ -219,7 +219,10 @@ nmap <leader>cn :cn<cr>
 nmap <leader>cp :cp<cr>
 nmap <leader>cw :cw<cr> 
 
-nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+"run command first:ctags --fields=+iaS --extra=+q -R -f ~/systags /usr/include /usr/local/include
+set tags+=~/systags
+"nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ~/.vim/systags /usr/include /usr/local/include <cr>
 
 set number
 
