@@ -260,17 +260,17 @@ set pastetoggle=<F3>
 
 
 "使用Doxygen Toolkit http://www.vim.org/scripts/script.php?script_id=987
-"let g:DoxygenToolkit_authorName="罗磊, luoleicn@gmail.com"
+let g:DoxygenToolkit_authorName="罗磊, luoleicn@gmail.com"
 "let s:licenseTag = "\n*遵循知识共享（CC By2.5）协议详见\n*"
 "let s:licenseTag = s:licenseTag . "http://creativecommons.org/licenses/by/2.5/cn/"
 "let g:DoxygenToolkit_licenseTag = s:licenseTag
-"let g:DoxygenToolkit_briefTag_funcName="yes"
-"let g:doxygen_enhanced_color=1
-"let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
-"let g:DoxygenToolkit_paramTag_pre="@Param " 
-"let g:DoxygenToolkit_returnTag="@Returns   " 
-"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
-"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
+let g:DoxygenToolkit_paramTag_pre="@Param " 
+let g:DoxygenToolkit_returnTag="@Returns   " 
+let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------" 
+let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------" 
 
 au BufNewFile,BufRead *.cu set ft=cuda
 au BufNewFile,BufRead *.cuh set ft=cuda
