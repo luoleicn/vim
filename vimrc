@@ -212,8 +212,8 @@ nmap <silent> <leader>lw :LUWalk<cr>
 
 filetype plugin indent on 
 "对c cpp文件缩进设置
-autocmd FileType c,cc,cpp,python,sh,py set shiftwidth=4 | set expandtab 
-autocmd FileType c,cc,cpp  map <buffer> <leader><space> :w<cr>:make<cr>
+autocmd FileType c,cc,cpp,cu,cuda,python,sh,py set shiftwidth=4 | set expandtab 
+autocmd FileType c,cc,cpp,cu,cuda  map <buffer> <leader><space> :w<cr>:make<cr>
 "quickfix
 nmap <leader>cn :cn<cr>
 nmap <leader>cp :cp<cr>
