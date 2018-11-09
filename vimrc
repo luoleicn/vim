@@ -380,6 +380,7 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -394,8 +395,12 @@ Plug 'wincent/command-t'
 Plug 'rosenfeld/conque-term'
 Plug 'bfrg/vim-cuda-syntax'
 Plug 'airblade/vim-gitgutter'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 
+
+Plug 'vim-scripts/vim-addon-mw-utils'
 Plug 'vim-scripts/google.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'vim-scripts/The-NERD-Commenter'
