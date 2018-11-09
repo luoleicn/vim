@@ -219,10 +219,11 @@ nmap <leader>cn :cn<cr>
 nmap <leader>cp :cp<cr>
 nmap <leader>cw :cw<cr> 
 
-"run command first:ctags --fields=+iaS --extra=+q -R -f ~/systags /usr/include /usr/local/include
+"run command first:ctags --fields=+iaS --extra=+q -R -f ~/.vim/systags /usr/include /usr/local/include
+set tags=./.tags;,.tags
 set tags+=~/systags
 "nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ~/.vim/systags /usr/include /usr/local/include <cr>
+nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ./.tags /usr/include /usr/local/include <cr>
 
 set number
 
@@ -355,6 +356,22 @@ set t_vb=
 set tm=500
 
 
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -371,9 +388,25 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 Plug 'Valloric/YouCompleteMe'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'wincent/command-t'
+Plug 'rosenfeld/conque-term'
+Plug 'bfrg/vim-cuda-syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'garbas/vim-snipmate'
+
+Plug 'vim-scripts/google.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'vim-scripts/The-NERD-Commenter'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/genutils'
+Plug 'vim-scripts/lookupfile'
+Plug 'vim-scripts/taglist.vim'
 
 " Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
+" Plug '~/my-prototype-plugin'
+
 
 " Initialize plugin system
 call plug#end()
