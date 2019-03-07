@@ -1,6 +1,6 @@
 set encoding=utf-8
 scriptencoding utf-8
-
+小米9 SE
 " {{{ General settings
 " The following are some sensible defaults for Vim for most users.
 " We attempt to change as little as possible from Vim's defaults,
@@ -221,10 +221,10 @@ nmap <leader>cp :cp<cr>
 nmap <leader>cw :cw<cr> 
 
 "run command first:ctags --fields=+iaS --extra=+q -R -f ~/.vim/systags /usr/include /usr/local/include
-set tags=./ctags;,.tags
+set tags=./tags;,.tags
 set tags+=~/systags
 "nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ./ctags /usr/include /usr/local/include <cr>
+nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ./tags /usr/include /usr/local/include <cr>
 
 set number
 
