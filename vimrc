@@ -1,6 +1,6 @@
 set encoding=utf-8
 scriptencoding utf-8
-小米9 SE
+
 " {{{ General settings
 " The following are some sensible defaults for Vim for most users.
 " We attempt to change as little as possible from Vim's defaults,
