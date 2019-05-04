@@ -1,4 +1,3 @@
-set encoding=utf-8
 scriptencoding utf-8
 
 " {{{ General settings
@@ -173,7 +172,6 @@ endif
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
 
 
-let g:miniBufExplMapWindowNavArrows = 1
 let mapleader=","
 
 """"""""""""""""""""""""""""""
@@ -188,7 +186,8 @@ let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
 "暂时对winManger 插件失去兴趣了
 " winManager setting
 " """"""""""""""""""""""""""""""
-let g:winManagerWindowLayout = "minibufexpl,FileExplorer|TagList"
+"let g:winManagerWindowLayout = "minibufexpl,FileExplorer|TagList"
+let g:winManagerWindowLayout = "FileExplorer|TagList"
 let g:winManagerWidth = 30
 let g:defaultExplorer = 0
 nmap <C-W><C-F> :FirstExplorerWindow<cr>
@@ -204,10 +203,6 @@ nmap <silent> <leader>wm :WMToggle<cr>
 "let LookupFile_PreservePatternHistory = 1     "保存查找历史
 "let LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
 "let LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
-"映射LUBufs为,lb, 在MiniBuf中找
-nmap <silent> <leader>lb :LUBufs<cr>
-"在文件目录中找
-nmap <silent> <leader>lw :LUWalk<cr>
   
 
 
@@ -221,7 +216,7 @@ nmap <leader>cp :cp<cr>
 nmap <leader>cw :cw<cr> 
 
 "run command first:ctags --fields=+iaS --extra=+q -R -f ~/.vim/systags /usr/include /usr/local/include
-set tags=./tags;,.tags
+set tags=tags;,.tags
 set tags+=~/systags
 "nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ./tags /usr/include /usr/local/include <cr>
@@ -304,11 +299,6 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 set laststatus=2
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
 
-"minibufexplpp
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
 
 
 " Run a python script
@@ -409,6 +399,10 @@ Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/lookupfile'
 Plug 'vim-scripts/taglist.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
 
 " Unmanaged plugin (manually installed and updated)
 " Plug '~/my-prototype-plugin'
@@ -420,7 +414,61 @@ call plug#end()
 " let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 " let g:ycm_global_ycm_extra_conf = '~/.vim/./plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 
+"ctrlp :
+"
+"<leader>f   # 模糊搜索最近打开的文件(MRU)
+"<leader>p   # 模糊搜索当前目录及其子目录下的所有文件
+"ctrl + j/k  # 进行上下选择
+"ctrl + x    # 在当前窗口水平分屏打开文件
+"ctrl + v    # 同上, 垂直分屏
+"ctrl + t    # 在tab中打开
+"F5          # 刷新可搜索文件
+"<c-d>       # 只能搜索全路径文件
+"<c-r>       # 可以使用正则搜索文件
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+nnoremap <Leader>b :CtrlPBuffer<Cr>
+
+
+"CtrlPFunky
+"
+"<leader>fu      # 进入当前文件的函数列表搜索
+"<leader>fU      # 搜索当前光标下单词对应的函数
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_extensions = ['funky']
+
+"vim-airline
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
+
+
+"TODO: to be removed
+"映射LUBufs为,lb, 在MiniBuf中找
+"nmap <silent> <leader>lb :LUBufs<cr>
+""在文件目录中找
+"nmap <silent> <leader>lw :LUWalk<cr>
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapWindowNavVim = 1 
+"let g:miniBufExplMapWindowNavArrows = 1 
+"let g:miniBufExplMapCTabSwitchBufs = 1 
+"let g:miniBufExplModSelTarget = 1 
