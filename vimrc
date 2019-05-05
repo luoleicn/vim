@@ -381,7 +381,7 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 Plug 'Valloric/YouCompleteMe'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'Yggdroot/LeaderF', { 'do': 'python install.py' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'wincent/command-t'
 Plug 'rosenfeld/conque-term'
