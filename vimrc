@@ -1,4 +1,5 @@
 scriptencoding utf-8
+set encoding=utf-8
 
 " {{{ General settings
 " The following are some sensible defaults for Vim for most users.
