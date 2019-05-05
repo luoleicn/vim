@@ -380,10 +380,8 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-Plug 'Valloric/YouCompleteMe'
-Plug 'Yggdroot/LeaderF', { 'do': 'python install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py' }
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'wincent/command-t'
 Plug 'rosenfeld/conque-term'
 Plug 'bfrg/vim-cuda-syntax'
 Plug 'airblade/vim-gitgutter'
@@ -406,7 +404,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 
 " Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
+"Plug 'wincent/command-t'
+"Plug 'Yggdroot/LeaderF', { 'do': 'python install.py' }
+"Plug '~/my-prototype-plugin'
 
 
 " Initialize plugin system
@@ -446,6 +446,7 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+let g:ctrlp_clear_cache_on_exit = 1
 nnoremap <Leader>b :CtrlPBuffer<Cr>
 
 
