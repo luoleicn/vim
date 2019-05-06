@@ -463,6 +463,16 @@ let g:ctrlp_extensions = ['funky']
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 0
 
+"The-NERD-Commenter
+",ca，在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
+",cc，注释当前行
+",c，切换注释/非注释状态
+",cs，以”性感”的方式注释
+",cA，在当前行尾添加注释符，并进入Insert模式
+",cu，取消注释
+"Normal模式下，几乎所有命令前面都可以指定行数。  比如  输入  6,cs    的意思就是以性感方式注释光标所在行开始6行代码
+"Visual模式下执行命令，会对选中的特定区块进行注释/反注释
+
 
 "TODO: to be removed
 "映射LUBufs为,lb, 在MiniBuf中找
