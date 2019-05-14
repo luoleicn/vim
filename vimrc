@@ -1,5 +1,4 @@
 scriptencoding utf-8
-set encoding=utf-8
 
 " {{{ General settings
 " The following are some sensible defaults for Vim for most users.
@@ -209,7 +208,7 @@ nmap <silent> <leader>wm :WMToggle<cr>
 
 filetype plugin indent on 
 "对c cpp文件缩进设置
-autocmd FileType c,cc,cpp,cu,cuda,python,sh,py set shiftwidth=4 | set expandtab 
+autocmd FileType c,cc,cpp,cu,cuda,python,sh,py set shiftwidth=2 | set expandtab 
 autocmd FileType c,cc,cpp,cu,cuda  map <buffer> <leader><space> :w<cr>:make<cr>
 "quickfix
 nmap <leader>cn :cn<cr>
@@ -236,7 +235,7 @@ inoremap <leader>q ''<esc>:let leavechar="'"<cr>i
 inoremap <leader>w ""<esc>:let leavechar='"'<cr>i
 inoremap <leader>i #include <><esc>:let leavechar=">"<cr>i
 inoremap <leader>I #include ""<esc>:let leavechar="\""<cr>i
-inoremap <leader>m int main(int args, char** argv)<esc>o{<esc>oreturn 0;<esc>o}<esc>k:let leavechar="}"<cr>O
+inoremap <leader>m int main(int args, char** argv) {<esc>o<esc>oreturn 0;<esc>o}<esc>k:let leavechar="}"<cr>O
 inoremap <leader>p #!/usr/bin/python<esc>o#coding=utf8<esc>o
 inoremap <leader>std using namespace std;<esc>o 
 "对于新建的.h文件，自动加入宏信息
@@ -403,10 +402,10 @@ Plug 'tacahiroy/ctrlp-funky'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 
-" Unmanaged plugin (manually installed and updated)
-"Plug 'wincent/command-t'
-"Plug 'Yggdroot/LeaderF', { 'do': 'python install.py' }
-"Plug '~/my-prototype-plugin'
+Plug 'google/vim-searchindex'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 
 
 " Initialize plugin system
@@ -463,24 +462,3 @@ let g:ctrlp_extensions = ['funky']
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 0
 
-"The-NERD-Commenter
-",ca，在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
-",cc，注释当前行
-",c，切换注释/非注释状态
-",cs，以”性感”的方式注释
-",cA，在当前行尾添加注释符，并进入Insert模式
-",cu，取消注释
-"Normal模式下，几乎所有命令前面都可以指定行数。  比如  输入  6,cs    的意思就是以性感方式注释光标所在行开始6行代码
-"Visual模式下执行命令，会对选中的特定区块进行注释/反注释
-
-
-"TODO: to be removed
-"映射LUBufs为,lb, 在MiniBuf中找
-"nmap <silent> <leader>lb :LUBufs<cr>
-""在文件目录中找
-"nmap <silent> <leader>lw :LUWalk<cr>
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapWindowNavVim = 1 
-"let g:miniBufExplMapWindowNavArrows = 1 
-"let g:miniBufExplMapCTabSwitchBufs = 1 
-"let g:miniBufExplModSelTarget = 1 
