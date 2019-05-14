@@ -461,3 +461,9 @@ let g:ctrlp_extensions = ['funky']
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 0
 
+
+"codefmt
+call glaive#Install()
+"binding <leader>=
+Glaive codefmt plugin[mappings]
+Glaive codefmt clang_format_style="google"
