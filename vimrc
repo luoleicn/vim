@@ -390,7 +390,6 @@ Plug 'garbas/vim-snipmate'
 Plug 'majutsushi/tagbar'
 
 Plug 'vim-scripts/vim-addon-mw-utils'
-Plug 'vim-scripts/google.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'vim-scripts/The-NERD-Commenter'
 Plug 'vim-scripts/a.vim'
