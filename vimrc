@@ -37,45 +37,8 @@ endif
 set nomodeline
 " }}}
 
-" {{{ Locale settings
-" Try to come up with some nice sane GUI fonts. Also try to set a sensible
-" value for fileencodings based upon locale. These can all be overridden in
-" the user vimrc file.
-"if v:lang =~? "^ko"
-"  set fileencodings=euc-kr
-"  set guifontset=-*-*-medium-r-normal--16-*-*-*-*-*-*-*
-"elseif v:lang =~? "^ja_JP"
-"  set fileencodings=euc-jp
-"  set guifontset=-misc-fixed-medium-r-normal--14-*-*-*-*-*-*-*
-"elseif v:lang =~? "^zh_TW"
-"  set fileencodings=big5
-"  set guifontset=-sony-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-1,-taipei-fixed-medium-r-normal--16-150-75-75-c-160-big5-0
-"elseif v:lang =~? "^zh_CN"
-"  set fileencodings=gb2312
-"  set guifontset=*-r-*
-"endif
-
-" If we have a BOM, always honour that rather than trying to guess.
-"if &fileencodings !~? "ucs-bom"
-"  set fileencodings^=ucs-bom
-"endif
-
-" Always check for UTF-8 when trying to determine encodings.
-"if &fileencodings !~? "utf-8"
-"  set fileencodings+=utf-8
-"endif
-
 " Make sure we have a sane fallback for encoding detection
 set fileencodings+=default
-" }}}
-
-" {{{ Syntax highlighting settings
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-"if &t_Co > 2 || has("gui_running")
-"  syntax on
-"  set hlsearch
-"endif
 " }}}
 
 " {{{ Terminal fixes
@@ -92,20 +55,6 @@ if &term ==? "gnome" && has("eval")
   exec "set <C-Left>=\eO5D"
   exec "set <C-Right>=\eO5C"
 endif
-" }}}
-
-" {{{ Filetype plugin settings
-" Enable plugin-provided filetype settings, but only if the ftplugin
-" directory exists (which it won't on livecds, for example).
-"if isdirectory(expand("$VIMRUNTIME/ftplugin"))
-"  filetype plugin on
-
-  " Uncomment the next line (or copy to your ~/.vimrc) for plugin-provided
-  " indent settings. Some people don't like these, so we won't turn them on by
-  " default.
-  " filetype indent on
-"endif
-" }}}
 
 " {{{ Fix &shell, see bug #101665.
 if "" == &shell
@@ -124,45 +73,6 @@ if has("eval")
 endif
 " }}}
 
-" {{{ Autocommands
-if has("autocmd")
-
-augroup gentoo
-  au!
-
-  " Gentoo-specific settings for ebuilds.  These are the federally-mandated
-  " required tab settings.  See the following for more information:
-  " http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml
-  " Note that the rules below are very minimal and don't cover everything.
-  " Better to emerge app-vim/gentoo-syntax, which provides full syntax,
-  " filetype and indent settings for all things Gentoo.
-  au BufRead,BufNewFile *.e{build,class} let is_bash=1|setfiletype sh
-  au BufRead,BufNewFile *.e{build,class} set ts=4 sw=4 noexpandtab
-
-  " In text files, limit the width of text to 78 characters, but be careful
-  " that we don't override the user's setting.
-  autocmd BufNewFile,BufRead *.txt
-        \ if &tw == 0 && ! exists("g:leave_my_textwidth_alone") |
-        \     setlocal textwidth=78 |
-        \ endif
-
-  " When editing a file, always jump to the last cursor position
-  autocmd BufReadPost *
-        \ if ! exists("g:leave_my_cursor_position_alone") |
-        \     if line("'\"") > 0 && line ("'\"") <= line("$") |
-        \         exe "normal g'\"" |
-        \     endif |
-        \ endif
-
-  " When editing a crontab file, set backupcopy to yes rather than auto. See
-  " :help crontab and bug #53437.
-  autocmd FileType crontab set backupcopy=yes
-
-augroup END
-
-endif " has("autocmd")
-" }}}
-
 " {{{ vimrc.local
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
@@ -170,7 +80,6 @@ endif
 " }}}
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
-
 
 let mapleader=","
 
@@ -193,18 +102,6 @@ let g:defaultExplorer = 0
 nmap <C-W><C-F> :FirstExplorerWindow<cr>
 nmap <C-W><C-B> :BottomExplorerWindow<cr>
 nmap <silent> <leader>wm :WMToggle<cr> 
-
-""""""""""""""""""""""""""""""
-" 已经使用fuzzyfinder代替
-" lookupfile setting
-" """"""""""""""""""""""""""""""
-"let LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
-"let LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
-"let LookupFile_PreservePatternHistory = 1     "保存查找历史
-"let LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
-"let LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
-  
-
 
 filetype plugin indent on 
 "对c cpp文件缩进设置
@@ -300,7 +197,6 @@ set laststatus=2
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
 
 
-
 " Run a python script
 function! ExecutePythonScript()
     if &filetype != 'python'
@@ -325,8 +221,6 @@ colorscheme wombat256mod
 
 set smartcase
 
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-
 map <silent> <F9> :TlistToggle<cr> 
 
 " Copy from http://amix.dk/vim/vimrc.html
@@ -345,7 +239,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
 
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
