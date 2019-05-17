@@ -17,6 +17,8 @@ set viminfo='20,\"500   " Keep a .viminfo file.
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
+inoremap jh <Esc>
+
 " When doing tab completion, give the following files lower priority. You may
 " wish to set 'wildignore' to completely ignore files, and 'wildmenu' to enable
 " enhanced tab completion. These can be done in the user vimrc file.
@@ -367,3 +369,9 @@ Glaive codefmt clang_format_style="google"
 "<leader>cy 注释并复制
 "<leader>cs 优美的注释
 "<leader>cu 取消注释
+
+"删除缓存区
+":bdelete num如bdelete 1删除第一个缓存区
+":1,3 bdelete 删除缓存区1到3
+":% bdelete 删除所有缓存区
+
