@@ -360,3 +360,10 @@ call glaive#Install()
 "binding <leader>=
 Glaive codefmt plugin[mappings]
 Glaive codefmt clang_format_style="google"
+
+"comment
+"<leader>cc 注释当前行
+"<leader>cm 只用一组符号来注释
+"<leader>cy 注释并复制
+"<leader>cs 优美的注释
+"<leader>cu 取消注释
