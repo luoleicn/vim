@@ -318,6 +318,9 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+
 
 "ctrlp :
 "
