@@ -382,3 +382,4 @@ Glaive codefmt clang_format_style="google"
 ":1,3 bdelete 删除缓存区1到3
 ":% bdelete 删除所有缓存区
 
+"easymotion相关http://wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
