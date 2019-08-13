@@ -304,7 +304,7 @@ Plug 'google/vim-searchindex'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-
+Plug 'easymotion/vim-easymotion'
 
 " Initialize plugin system
 call plug#end()
