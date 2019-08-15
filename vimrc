@@ -283,7 +283,7 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
 " Plug 'zxqfl/tabnine-vim', { 'do': 'python install.py --clang-completer' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'rosenfeld/conque-term'
