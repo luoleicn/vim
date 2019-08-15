@@ -260,6 +260,11 @@ let g:gutentags_cache_dir = s:vim_tags
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--exclude=.git']
+let g:gutentags_ctags_extra_args += ['--exclude=build_isolated']
+let g:gutentags_ctags_extra_args += ['--exclude=devel_isolated']
+let g:gutentags_ctags_extra_args += ['--exclude=install_isolated']
+let g:gutentags_ctags_extra_args += ['--exclude=.cquery_cache']
 
 
 " Return to last edit position when opening files (You want this!)
@@ -278,7 +283,7 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
 " Plug 'zxqfl/tabnine-vim', { 'do': 'python install.py --clang-completer' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'rosenfeld/conque-term'
