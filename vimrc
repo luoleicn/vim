@@ -111,7 +111,8 @@ nmap <silent> <leader>wm :WMToggle<cr>
 
 filetype plugin indent on 
 "对c cpp文件缩进设置
-autocmd FileType c,cc,cpp,cu,cuda,python,sh,py set shiftwidth=2 | set expandtab 
+"autocmd FileType c,cc,cpp,cu,cuda,python,sh,py set shiftwidth=2 | set expandtab 
+autocmd FileType c,cc,cpp,cu,cuda,python,sh,py setlocal et sta sw=2 sts=2
 autocmd FileType c,cc,cpp,cu,cuda  map <buffer> <leader><space> :w<cr>:make<cr>
 "quickfix
 nmap <leader>cn :cn<cr>
