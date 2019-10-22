@@ -123,7 +123,7 @@ nmap <leader>cw :cw<cr>
 set tags=tags;,.tags
 set tags+=~/systags
 "nmap <leader>ct :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
-nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ./tags /usr/include /usr/local/include <cr>
+nmap <leader>ct :!ctags -I __THROW --file-scope=yes --langmap=c:+.cu.cuh --langmap=c++:+.cu.cuh --languages=c,c++ --links=yes --c-kinds=+p --fields=+S  -R -f ./tags /usr/include /usr/local/include <cr>
 
 set number
 
@@ -261,6 +261,7 @@ let g:gutentags_cache_dir = s:vim_tags
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--langmap=c++:+.cu.cuh']
 let g:gutentags_ctags_extra_args += ['--exclude=.git']
 let g:gutentags_ctags_extra_args += ['--exclude=build_isolated']
 let g:gutentags_ctags_extra_args += ['--exclude=devel_isolated']
