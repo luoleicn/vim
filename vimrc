@@ -267,6 +267,7 @@ let g:gutentags_ctags_extra_args += ['--exclude=build_isolated']
 let g:gutentags_ctags_extra_args += ['--exclude=devel_isolated']
 let g:gutentags_ctags_extra_args += ['--exclude=install_isolated']
 let g:gutentags_ctags_extra_args += ['--exclude=.cquery_cache']
+let g:gutentags_ctags_extra_args += ['--exclude=build']
 " 针对 Ctrl + ]对函数、元素进行跳转时控制是否进行选择： https://blog.csdn.net/Aemonair/article/details/78813823
 set cscopetag
 
