@@ -413,3 +413,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" markdown 文档
+" https://github.com/iamcco/markdown-preview.vim/blob/master/README_cn.md
