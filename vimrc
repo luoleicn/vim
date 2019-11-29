@@ -289,11 +289,11 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
-Plug 'zxqfl/tabnine-vim'
+Plug 'zxqfl/tabnine-vim', {'do' : './install.sh'}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'rosenfeld/conque-term'
 Plug 'bfrg/vim-cuda-syntax'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
@@ -317,8 +317,14 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
-" Initialize plugin system
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+
 call plug#end()
 
 " let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
@@ -397,3 +403,14 @@ Glaive codefmt clang_format_style="google"
 ":% bdelete 删除所有缓存区
 
 "easymotion相关http://wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
+
+" ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
