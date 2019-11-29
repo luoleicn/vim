@@ -316,6 +316,7 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'easymotion/vim-easymotion'
+Plug 'godlygeek/tabular'
 
 " Initialize plugin system
 call plug#end()
