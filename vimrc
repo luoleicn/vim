@@ -306,8 +306,8 @@ Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/lookupfile'
 Plug 'vim-scripts/taglist.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'tacahiroy/ctrlp-funky'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 
@@ -324,6 +324,9 @@ Plug 'honza/vim-snippets'
 
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
+
+Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
+
 
 call plug#end()
 
@@ -342,42 +345,42 @@ let g:ycm_add_preview_to_completeopt = 0
 set rtp+=~/.vim/plugged/tabnine-vim
 
 
-"ctrlp :
+""ctrlp :
+""
+""<leader>f   # 模糊搜索最近打开的文件(MRU)
+""<leader>p   # 模糊搜索当前目录及其子目录下的所有文件
+""ctrl + j/k  # 进行上下选择
+""ctrl + x    # 在当前窗口水平分屏打开文件
+""ctrl + v    # 同上, 垂直分屏
+""ctrl + t    # 在tab中打开
+""F5          # 刷新可搜索文件
+""<c-d>       # 只能搜索全路径文件
+""<c-r>       # 可以使用正则搜索文件
+"let g:ctrlp_map = '<leader>p'
+"let g:ctrlp_cmd = 'CtrlP'
+"map <leader>f :CtrlPMRU<CR>
+"let g:ctrlp_custom_ignore = {
+"    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+"    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+"    \ }
+"let g:ctrlp_working_path_mode=0
+"let g:ctrlp_match_window_bottom=1
+"let g:ctrlp_max_height=15
+"let g:ctrlp_match_window_reversed=0
+"let g:ctrlp_mruf_max=500
+"let g:ctrlp_follow_symlinks=1
+"let g:ctrlp_clear_cache_on_exit = 1
+"nnoremap <Leader>b :CtrlPBuffer<Cr>
 "
-"<leader>f   # 模糊搜索最近打开的文件(MRU)
-"<leader>p   # 模糊搜索当前目录及其子目录下的所有文件
-"ctrl + j/k  # 进行上下选择
-"ctrl + x    # 在当前窗口水平分屏打开文件
-"ctrl + v    # 同上, 垂直分屏
-"ctrl + t    # 在tab中打开
-"F5          # 刷新可搜索文件
-"<c-d>       # 只能搜索全路径文件
-"<c-r>       # 可以使用正则搜索文件
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
-    \ }
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=15
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_clear_cache_on_exit = 1
-nnoremap <Leader>b :CtrlPBuffer<Cr>
-
-
-"CtrlPFunky
 "
-"<leader>fu      # 进入当前文件的函数列表搜索
-"<leader>fU      # 搜索当前光标下单词对应的函数
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_extensions = ['funky']
+""CtrlPFunky
+""
+""<leader>fu      # 进入当前文件的函数列表搜索
+""<leader>fU      # 搜索当前光标下单词对应的函数
+"nnoremap <Leader>fu :CtrlPFunky<Cr>
+"nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+"let g:ctrlp_funky_syntax_highlight = 1
+"let g:ctrlp_extensions = ['funky']
 
 "vim-airline
 let g:airline#extensions#branch#enabled = 1
@@ -416,3 +419,33 @@ let g:UltiSnipsEditSplit="vertical"
 
 " markdown 文档
 " https://github.com/iamcco/markdown-preview.vim/blob/master/README_cn.md
+
+" leaderF
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+"let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_ShortcutF = "<leader>p"
+noremap <leader>b :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>r :<C-U><C-R>=printf("Leaderf rg %s", "")<CR><CR>
+noremap <leader>f :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+" let g:Lf_Gtagslabel = 'native-pygments'
+" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
