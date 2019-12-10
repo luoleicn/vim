@@ -2,7 +2,7 @@
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
 sudo dpkg -i ripgrep_11.0.2_amd64.deb
 
-sudo apt install -y cmake ctags g++ git
+sudo apt install -y cmake exuberant-ctags g++ git global
 
 #如果vim版本低于8.1，使用下面命令更新到最新版本，否则配置关闭LeaderF的popup功能
 sudo add-apt-repository ppa:jonathonf/vim
@@ -12,3 +12,6 @@ sudo apt install vim
 
 #mac
 brew install rg
+#注意环境变量设置
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+brew install global
