@@ -4,6 +4,11 @@ sudo dpkg -i ripgrep_11.0.2_amd64.deb
 
 sudo apt install -y cmake ctags g++ git
 
+#如果vim版本低于8.1，使用下面命令更新到最新版本，否则配置关闭LeaderF的popup功能
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim
+
 
 #mac
 brew install rg
