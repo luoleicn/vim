@@ -2,12 +2,19 @@
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
 sudo dpkg -i ripgrep_11.0.2_amd64.deb
 
-sudo apt install -y cmake exuberant-ctags g++ git global
+sudo apt install -y cmake g++ git 
 
 #如果vim版本低于8.1，使用下面命令更新到最新版本，否则配置关闭LeaderF的popup功能
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 sudo apt install vim
+
+#global如果apt版本库里低于6.6.3（目前18.04库里版本是6.6.2），则需要手动编译，否则apt直接按照
+# 手动下载代码https://www.gnu.org/software/global/download.html
+
+#使用universal-ctags（可以使用ubuntu自带的exuberant-ctags， 但不支持cuda代码的索引）
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags && ./autogen.sh && ./configure && make -j && make install
 
 
 #mac
