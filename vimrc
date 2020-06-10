@@ -112,7 +112,7 @@ nmap <silent> <leader>wm :WMToggle<cr>
 filetype plugin indent on 
 "对c cpp文件缩进设置
 "autocmd FileType c,cc,cpp,cu,cuda,python,sh,py set shiftwidth=2 | set expandtab 
-autocmd FileType c,cc,cpp,cu,cuda,python,sh,py setlocal et sta sw=2 sts=2
+autocmd FileType c,cc,cpp,cu,cuda,python,sh,py setlocal et sta sw=4 sts=4
 autocmd FileType c,cc,cpp,cu,cuda  map <buffer> <leader><space> :w<cr>:make<cr>
 "quickfix
 nmap <leader>cn :cn<cr>
@@ -328,7 +328,7 @@ Plug 'google/vim-glaive'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 " Track the engine.
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
@@ -414,6 +414,21 @@ Glaive codefmt clang_format_style="google"
 ":bdelete num如bdelete 1删除第一个缓存区
 ":1,3 bdelete 删除缓存区1到3
 ":% bdelete 删除所有缓存区
+func! DeleteAllBuffersInWindow()
+    let s:curWinNr = winnr()
+    if winbufnr(s:curWinNr) == 1
+        ret
+    endif
+    let s:curBufNr = bufnr("%")
+    exe "bn"
+    let s:nextBufNr = bufnr("%")
+    while s:nextBufNr != s:curBufNr
+        exe "bn"
+        exe "bdel ".s:nextBufNr
+        let s:nextBufNr = bufnr("%")
+    endwhile
+endfunc
+map <leader>bda :call DeleteAllBuffersInWindow()<CR>
 
 "easymotion相关http://wklken.me/posts/2015/06/07/vim-plugin-easymotion.html
 
