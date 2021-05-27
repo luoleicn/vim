@@ -475,4 +475,7 @@ noremap <leader>fd :<C-U><C-R>=printf("Leaderf gtags -d %s --auto-jump", expand(
 noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+noremap <leader>fw :<C-U><C-R>=printf("Leaderf rg %s", "")<CR><CR>
+
+let g:snipMate = { 'snippet_version' : 1 }
 
