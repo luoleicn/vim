@@ -299,7 +299,8 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --clang-completer' }
-Plug 'zxqfl/tabnine-vim', {'do' : './install.sh'}
+" Plug 'zxqfl/tabnine-vim', {'do' : './install.sh'}
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --clang-completer' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'rosenfeld/conque-term'
 Plug 'bfrg/vim-cuda-syntax'
@@ -478,4 +479,15 @@ noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 noremap <leader>fw :<C-U><C-R>=printf("Leaderf rg %s", "")<CR><CR>
 
 let g:snipMate = { 'snippet_version' : 1 }
+
+
+highlight Search cterm=NONE ctermfg=white ctermbg=blue
+highlight IncSearch cterm=NONE ctermfg=white ctermbg=blue
+
+" 禁用自动错误检查
+let g:ycm_auto_diagnostics = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_keep_logfiles = 0
+let g:ycm_enable_diagnostic_signs = 0
+
 
